@@ -37,7 +37,11 @@ Each skill's section below includes its own installation command.
 
 > **Already installed these as slash commands?** Custom commands and skills have merged in Claude Code, so an existing `~/.claude/commands/<name>.md` file keeps working and still provides `/<name>`. To avoid two definitions of the same command, delete the old `~/.claude/commands/<name>.md` file after installing the skill version.
 
-> **Uploading to Claude.ai instead?** Custom skills are uploaded as a zip of the skill folder, e.g. `zip -r review-paper.zip Skills/review-paper` — the folder name must match the `name` field in `SKILL.md`, which is how the folders here are laid out.
+### Where the installed skills show up
+
+Skills in `~/.claude/skills/` (or `.claude/skills/`) are read by **Claude Code** — the Code tab of the Claude desktop app and the `claude` CLI — when a session starts. After installing, open a **new** Claude Code session and type `/`; the skills appear in the command picker as `/review-paper`, `/review-pap`, and so on.
+
+They will **not** appear under **Settings → Skills** in the Claude desktop app. That page lists a separate, server-side skill library used by Claude chat and Cowork, which only knows about skills uploaded through that page. To add a skill there as well, upload a zip of its folder (for example `zip -r review-paper.zip Skills/review-paper`; the folder name must match the `name` field in `SKILL.md`, which is how the folders here are laid out). These skills are designed for Claude Code, where they can read the paper from disk and launch parallel review agents, so that is where they are most useful.
 
 
 ## Skills
