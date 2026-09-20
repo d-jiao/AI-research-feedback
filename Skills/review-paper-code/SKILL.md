@@ -1,9 +1,9 @@
 ---
 name: review-paper-code
 description: Review research code for reproducibility and quality, extract the paper's claims, compare paper to code, and write a constructive markdown report. Empirical mode handles LaTeX papers with Stata/R/Python analysis code; theory mode (--theory) handles analytical papers with numerical-calibration/symbolic support code (Python, Julia, MATLAB, Mathematica), mapping propositions and figures to the code that verifies them. Auto-detects mode.
-user-invocable: true
-argument-hint: [optional: --theory|--empirical] [optional: path/to/main.tex] [optional: path/to/code_dir] [optional: main|full]
+argument-hint: "[optional: --theory|--empirical] [optional: path/to/main.tex] [optional: path/to/code_dir] [optional: main|full]"
 allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Agent
+disable-model-invocation: true
 ---
 
 # Review Paper Code

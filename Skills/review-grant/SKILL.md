@@ -1,5 +1,9 @@
 ---
+name: review-grant
 description: Run a 6-agent pre-submission panel review for a grant proposal targeting a specified funder or program
+argument-hint: "[optional: FUNDER] [optional: path/to/proposal.pdf]"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Agent
+disable-model-invocation: true
 ---
 
 You are coordinating a rigorous pre-submission review of a grant proposal. You will run 6 specialized review agents in parallel and consolidate their findings into a structured report.

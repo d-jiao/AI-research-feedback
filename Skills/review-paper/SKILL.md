@@ -1,5 +1,9 @@
 ---
+name: review-paper
 description: Run a 6-agent pre-submission referee report for an academic paper targeting a specified journal. Supports empirical and analytical (theory) papers via an auto-detected --theory/--empirical mode.
+argument-hint: "[optional: --theory|--empirical] [optional: JOURNAL] [optional: path/to/main.tex]"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Agent
+disable-model-invocation: true
 ---
 
 You are coordinating a rigorous pre-submission review of an academic economics or accounting paper. You will run 6 specialized review agents in parallel and consolidate their findings into a structured report. The review adapts to whether the paper is empirical or analytical (theory) — see Phase 1, Step 0.

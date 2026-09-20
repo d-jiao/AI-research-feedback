@@ -1,15 +1,43 @@
 # Using AI to get feedback on your research
 
-A collection of [Claude Code](https://claude.ai/code) skills for academic research review. This tool was developed by [Claes Bäckman](https://claesbackman.com).
+A collection of [Claude Code](https://claude.ai/code) skills for academic research review. This tool was developed by [Claes Bäckman](https://claesbackman.com); this repository is a fork of [claesbackman/AI-research-feedback](https://github.com/claesbackman/AI-research-feedback).
 
 
 ## Skills in this folder
 
-- `Skills/review-paper.md`: Full referee-style paper review command.
-- `Skills/review-paper-light.md`: Fast 2-agent paper check.
-- `Skills/review-paper-code.md`: Paper-code reproducibility and alignment review.
-- `Skills/review-pap.md`: Pre-analysis plan review command.
-- `Skills/review-grant.md`: Grant proposal review command.
+Each skill lives in its own folder containing a `SKILL.md` file:
+
+- `Skills/review-paper/SKILL.md`: Full referee-style paper review command.
+- `Skills/review-paper-light/SKILL.md`: Fast 2-agent paper check.
+- `Skills/review-paper-code/SKILL.md`: Paper-code reproducibility and alignment review.
+- `Skills/review-pap/SKILL.md`: Pre-analysis plan review command.
+- `Skills/review-grant/SKILL.md`: Grant proposal review command.
+
+## Installation
+
+These are [Claude Code skills](https://docs.anthropic.com/en/docs/claude-code/skills). A skill is installed by placing its `SKILL.md` at `~/.claude/skills/<name>/SKILL.md` (available in every project) or at `.claude/skills/<name>/SKILL.md` inside a project (available only there). Once installed, invoke a skill by typing `/<name>` (for example, `/review-paper`) inside Claude Code.
+
+### Install all skills (one-liner)
+
+```bash
+for s in review-paper review-paper-light review-paper-code review-pap review-grant; do mkdir -p ~/.claude/skills/$s && curl -fsSL -o ~/.claude/skills/$s/SKILL.md https://raw.githubusercontent.com/d-jiao/AI-research-feedback/main/Skills/$s/SKILL.md; done
+```
+
+For a project-local install, run this from the project root instead:
+
+```bash
+for s in review-paper review-paper-light review-paper-code review-pap review-grant; do mkdir -p .claude/skills/$s && curl -fsSL -o .claude/skills/$s/SKILL.md https://raw.githubusercontent.com/d-jiao/AI-research-feedback/main/Skills/$s/SKILL.md; done
+```
+
+Re-run the same command at any time to update to the latest version. The `-f` flag makes `curl` fail loudly on a bad URL instead of silently saving an error page as the skill file.
+
+### Install a single skill
+
+Each skill's section below includes its own installation command.
+
+> **Already installed these as slash commands?** Custom commands and skills have merged in Claude Code, so an existing `~/.claude/commands/<name>.md` file keeps working and still provides `/<name>`. To avoid two definitions of the same command, delete the old `~/.claude/commands/<name>.md` file after installing the skill version.
+
+> **Uploading to Claude.ai instead?** Custom skills are uploaded as a zip of the skill folder, e.g. `zip -r review-paper.zip Skills/review-paper` — the folder name must match the `name` field in `SKILL.md`, which is how the folders here are laid out.
 
 
 ## Skills
@@ -32,15 +60,15 @@ Runs a rigorous pre-submission review of an academic paper, simulating the scrut
 **Installation:**
 
 ```bash
-mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/review-paper.md \
-  https://raw.githubusercontent.com/claesbackman/AI-research-feedback/main/Skills/review-paper.md
+mkdir -p ~/.claude/skills/review-paper && curl -fsSL -o ~/.claude/skills/review-paper/SKILL.md \
+  https://raw.githubusercontent.com/d-jiao/AI-research-feedback/main/Skills/review-paper/SKILL.md
 ```
 
 For a project-local install:
 
 ```bash
-mkdir -p .claude/commands && curl -o .claude/commands/review-paper.md \
-  https://raw.githubusercontent.com/claesbackman/AI-research-feedback/main/Skills/review-paper.md
+mkdir -p .claude/skills/review-paper && curl -fsSL -o .claude/skills/review-paper/SKILL.md \
+  https://raw.githubusercontent.com/d-jiao/AI-research-feedback/main/Skills/review-paper/SKILL.md
 ```
 
 **Usage:**
@@ -92,15 +120,15 @@ Runs a fast 2-agent pre-submission check for an economics paper. It focuses on c
 **Installation:**
 
 ```bash
-mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/review-paper-light.md \
-  https://raw.githubusercontent.com/claesbackman/AI-research-feedback/main/Skills/review-paper-light.md
+mkdir -p ~/.claude/skills/review-paper-light && curl -fsSL -o ~/.claude/skills/review-paper-light/SKILL.md \
+  https://raw.githubusercontent.com/d-jiao/AI-research-feedback/main/Skills/review-paper-light/SKILL.md
 ```
 
 For a project-local install:
 
 ```bash
-mkdir -p .claude/commands && curl -o .claude/commands/review-paper-light.md \
-  https://raw.githubusercontent.com/claesbackman/AI-research-feedback/main/Skills/review-paper-light.md
+mkdir -p .claude/skills/review-paper-light && curl -fsSL -o .claude/skills/review-paper-light/SKILL.md \
+  https://raw.githubusercontent.com/d-jiao/AI-research-feedback/main/Skills/review-paper-light/SKILL.md
 ```
 
 **Usage:**
@@ -138,6 +166,20 @@ Runs a paper-code review. In **empirical mode** it discovers the main LaTeX pape
 | Code quality | Structure, commented-out code, opaque transforms | Same, plus convergence/tolerance/multiplicity handling and magic constants |
 | Alignment | Tables, variables, sample restrictions, methods, clustering, FEs | Propositions, numerical examples, figures, thresholds/equilibria, parameter consistency |
 
+**Installation:**
+
+```bash
+mkdir -p ~/.claude/skills/review-paper-code && curl -fsSL -o ~/.claude/skills/review-paper-code/SKILL.md \
+  https://raw.githubusercontent.com/d-jiao/AI-research-feedback/main/Skills/review-paper-code/SKILL.md
+```
+
+For a project-local install:
+
+```bash
+mkdir -p .claude/skills/review-paper-code && curl -fsSL -o .claude/skills/review-paper-code/SKILL.md \
+  https://raw.githubusercontent.com/d-jiao/AI-research-feedback/main/Skills/review-paper-code/SKILL.md
+```
+
 **Usage:**
 
 ```text
@@ -171,15 +213,15 @@ Runs a 6-agent pre-submission review of a pre-analysis plan (PAP). The command a
 **Installation:**
 
 ```bash
-mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/review-pap.md \
-  https://raw.githubusercontent.com/claesbackman/AI-research-feedback/main/Skills/review-pap.md
+mkdir -p ~/.claude/skills/review-pap && curl -fsSL -o ~/.claude/skills/review-pap/SKILL.md \
+  https://raw.githubusercontent.com/d-jiao/AI-research-feedback/main/Skills/review-pap/SKILL.md
 ```
 
 For a project-local install:
 
 ```bash
-mkdir -p .claude/commands && curl -o .claude/commands/review-pap.md \
-  https://raw.githubusercontent.com/claesbackman/AI-research-feedback/main/Skills/review-pap.md
+mkdir -p .claude/skills/review-pap && curl -fsSL -o .claude/skills/review-pap/SKILL.md \
+  https://raw.githubusercontent.com/d-jiao/AI-research-feedback/main/Skills/review-pap/SKILL.md
 ```
 
 **Usage:**
@@ -222,15 +264,15 @@ Runs a 6-agent pre-submission panel review of a grant proposal. The command auto
 **Installation:**
 
 ```bash
-mkdir -p ~/.claude/commands && curl -o ~/.claude/commands/review-grant.md \
-  https://raw.githubusercontent.com/claesbackman/AI-research-feedback/main/Skills/review-grant.md
+mkdir -p ~/.claude/skills/review-grant && curl -fsSL -o ~/.claude/skills/review-grant/SKILL.md \
+  https://raw.githubusercontent.com/d-jiao/AI-research-feedback/main/Skills/review-grant/SKILL.md
 ```
 
 For a project-local install:
 
 ```bash
-mkdir -p .claude/commands && curl -o .claude/commands/review-grant.md \
-  https://raw.githubusercontent.com/claesbackman/AI-research-feedback/main/Skills/review-grant.md
+mkdir -p .claude/skills/review-grant && curl -fsSL -o .claude/skills/review-grant/SKILL.md \
+  https://raw.githubusercontent.com/d-jiao/AI-research-feedback/main/Skills/review-grant/SKILL.md
 ```
 
 **Usage:**

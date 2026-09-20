@@ -1,5 +1,9 @@
 ---
+name: review-paper-light
 description: Run a fast 2-agent pre-submission check for an economics or accounting paper. Empirical mode focuses on contribution, identification, and causal overclaiming; theory mode (--theory) focuses on contribution, modelling credibility, and claim-vs-proven discipline. Auto-detects mode. Completes in ~1 minute.
+argument-hint: "[optional: --theory|--empirical] [optional: path/to/main.tex]"
+allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Agent
+disable-model-invocation: true
 ---
 
 You are coordinating a fast pre-submission check of an economics or accounting paper. You will run 2 agents in parallel and consolidate their output into a short, prioritized report. The check adapts to whether the paper is empirical or analytical (theory) — see Phase 1, Step 0.
